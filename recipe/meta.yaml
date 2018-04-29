@@ -1,8 +1,8 @@
-{% set name = "etcd"%}
-{% set version = "3.1.12"%}
+{% set name = "etcd" %}
+{% set version = "3.3.4" %}
 
-{% set sha256 = "88d85acf822f9e8167ad75730f99cde56f5b752eff4a31f8c74a4829acdc975d" %}
-{% set sha256_win64 = "b1bae991dbbe83d70977d98660354d74d0e3e0b267071f11a747fda3d6b79d4a" %}
+{% set sha256 = "95405df7febae747ebc34432977ac180ba007deb84fe97ccc16b64e1f8a0cd1f" %}
+{% set sha256_win64 = "4f2f34f229087e0f527896214099e3155d5a222da4f91de83a8e70800ac7ff0d" %}
 
 
 package:
@@ -24,7 +24,7 @@ build:
 
 requirements:
   build:
-    - go 1.8.*  # [not win]
+    - go 1.9.*  # [not win]
     - git  # [not win]
     - make  # [not win]
     - toolchain  # [not win]
