@@ -1,5 +1,5 @@
-{% set name = "etcd"%}
-{% set version = "3.3.4"%}
+{% set name = "etcd" %}
+{% set version = "3.3.4" %}
 
 {% set sha256 = "x" %}
 {% set sha256_win64 = "x" %}
