@@ -1,5 +1,5 @@
-{% set name = "etcd"%}
-{% set version = "3.1.16"%}
+{% set name = "etcd" %}
+{% set version = "3.1.16" %}
 
 {% set sha256 = "9dcc931710e620a8f35d86d61f030683bb1dff90144f44638b771ac4a560fcc4" %}
 {% set sha256_win64 = "4a74d8e07aadf3699dd13ac07e3e6de472c3e651c8d0d7c51e71c20179b05b72" %}
