@@ -14,14 +14,16 @@ Summary: A distributed, reliable key-value store for the most critical data of a
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/etcd-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/etcd-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/etcd-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/etcd-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/etcd-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/etcd-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/etcd-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/etcd-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/etcd-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/etcd-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/etcd-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/etcd-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/etcd/badges/version.svg)](https://anaconda.org/conda-forge/etcd)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/etcd/badges/downloads.svg)](https://anaconda.org/conda-forge/etcd)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-etcd-green.svg)](https://anaconda.org/conda-forge/etcd) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/etcd.svg)](https://anaconda.org/conda-forge/etcd) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/etcd.svg)](https://anaconda.org/conda-forge/etcd) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/etcd.svg)](https://anaconda.org/conda-forge/etcd) |
 
 Installing etcd
 ===============
