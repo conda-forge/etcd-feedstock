@@ -1,8 +1,8 @@
 {% set name = "etcd"%}
-{% set version = "3.1.12"%}
+{% set version = "3.1.16"%}
 
-{% set sha256 = "88d85acf822f9e8167ad75730f99cde56f5b752eff4a31f8c74a4829acdc975d" %}
-{% set sha256_win64 = "b1bae991dbbe83d70977d98660354d74d0e3e0b267071f11a747fda3d6b79d4a" %}
+{% set sha256 = "9dcc931710e620a8f35d86d61f030683bb1dff90144f44638b771ac4a560fcc4" %}
+{% set sha256_win64 = "4a74d8e07aadf3699dd13ac07e3e6de472c3e651c8d0d7c51e71c20179b05b72" %}
 
 
 package:
