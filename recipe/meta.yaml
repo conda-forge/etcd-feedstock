@@ -16,14 +16,15 @@ source:
 
 build:
   skip: True  # [win32]
-  number: 0
+  number: 1
 
 requirements:
   build:
+    - make  # [not win]
+    - {{ compiler('c') }}
+  host:
     - go 1.9.*  # [not win]
     - git  # [not win]
-    - make  # [not win]
-    - toolchain  # [not win]
 
 test:
   commands:
