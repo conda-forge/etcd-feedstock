@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-make_goroot_read_only()
-{
-    find $PREFIX/go -type d -exec chmod 555 {} \;
-}
-
 git_init()
 {
     git init
@@ -18,12 +13,12 @@ git_init()
 build_unix()
 {
     ./build
+    mkdir -p $PREFIX/bin
     mv bin/* $PREFIX/bin
 }
 
 case $(uname -s) in
     "Linux"|"Darwin")
-        make_goroot_read_only
         git_init
         build_unix
         ;;
