@@ -20,10 +20,8 @@ build:
 
 requirements:
   build:
+    - {{ compiler('go') }}  # [not win]
     - make  # [not win]
-    - {{ compiler('c') }}
-  host:
-    - go 1.9.*  # [not win]
     - git  # [not win]
 
 test:
