@@ -16,14 +16,14 @@ source:
 
 build:
   skip: True  # [win32]
-  number: 0
+  number: 1000
 
 requirements:
   build:
-    - go 1.9.*  # [not win]
+    - {{ compiler('go') }}  # [not win]
     - git  # [not win]
     - make  # [not win]
-    - toolchain  # [not win]
+    - {{ compiler('c') }}  # [not win]
 
 test:
   commands:
