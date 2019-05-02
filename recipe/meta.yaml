@@ -1,5 +1,5 @@
 {% set name = "etcd" %}
-{% set version = "3.3.12" %}
+{% set version = "3.3.13" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,11 @@ package:
 source:
   url: https://github.com/coreos/{{ name }}/archive/v{{ version }}.tar.gz  # [not win]
   fn: {{ name }}-{{ version }}.tar.gz  # [not win]
-  sha256: 0452a98bd485d757fd85d2182f8eac8c2dad315bcb6cf29a797ced9e2669c413  # [not win]
+  sha256: 02df2eb25d67dafc355d19a91791f686fcf59b04cea46110c3a11fcd5e365100  # [not win]
 
   url: https://github.com/coreos/{{ name }}/releases/download/v{{ version }}/{{ name }}-v{{ version }}-windows-amd64.zip  # [win]
   fn: {{ name }}-{{ version }}.zip  # [win]
-  sha256: 05eb68132ce06a37704da595f17ee33b65ee1e4cf9a6e5ed947d9b74538c3798  # [win]
+  sha256: 718953a44005b2f53075699204c63e2d0a8227a52060eff178c7047d42bc3cb1  # [win]
 
 build:
   skip: True  # [win32]
