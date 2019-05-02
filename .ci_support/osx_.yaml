@@ -9,7 +9,7 @@ channel_targets:
 docker_image:
 - condaforge/linux-anvil
 go_compiler:
-- go
+- go-nocgo
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
