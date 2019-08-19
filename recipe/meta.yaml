@@ -24,9 +24,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('go') }} >= 1.12  # [not win]
-    - make  # [not win]
-    - git  # [not win]
+    - {{ compiler('go') }}
 
 test:
   commands:
