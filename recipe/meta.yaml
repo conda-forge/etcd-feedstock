@@ -1,45 +1,43 @@
-{% set name = "etcd" %}
-{% set version = "3.3.13" %}
+{% set import_path = "github.com/coreos/etcd" %}
+{% set version = "3.3.14" %}
+
+{% set name = import_path.split('/')[-1] %}
+{% set pkg_src = 'src' + os.sep+ import_path.replace("/",os.sep) %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/coreos/{{ name }}/archive/v{{ version }}.tar.gz  # [not win]
-  fn: {{ name }}-{{ version }}.tar.gz  # [not win]
-  sha256: 02df2eb25d67dafc355d19a91791f686fcf59b04cea46110c3a11fcd5e365100  # [not win]
-
-  url: https://github.com/coreos/{{ name }}/releases/download/v{{ version }}/{{ name }}-v{{ version }}-windows-amd64.zip  # [win]
-  fn: {{ name }}-{{ version }}.zip  # [win]
-  sha256: 718953a44005b2f53075699204c63e2d0a8227a52060eff178c7047d42bc3cb1  # [win]
+  - folder: {{ pkg_src }}
+    url: https://{{ import_path | replace("coreos", "etcd-io") }}/archive/v{{ version }}.tar.gz
+    sha256: 0990a26616c0f1f56c1bc5c28a41722ed2a2da01f714145a2a2d037e24d87cb9
 
 build:
-  skip: True  # [win32]
   number: 0
+  skip: True  # [win32]
+  script:
+    - pushd {{ pkg_src }}
+    {% for path in [ ".", "./etcdctl" ] %}
+    - go install -v {{ path }}
+    {% endfor %}
 
 requirements:
   build:
-    - {{ compiler('go') }}  # [not win]
-    - make  # [not win]
-    - git  # [not win]
+    - {{ compiler('go') }}
 
 test:
   commands:
     - etcd --version
     - etcdctl --version
 
-    # Ugly hack because etcd&etcdclt are not a dynamic executable
-    - conda inspect linkages -p $PREFIX {{ name|lower }}  # [osx]
-    - conda inspect objects -p $PREFIX {{ name|lower }}  # [osx]
-
 about:
-  home: https://coreos.com/etcd/
+  home: https://etcd.io
   license: Apache-2.0
   license_family: Apache
   summary: A distributed, reliable key-value store for the most critical data of a distributed system.
-  doc_url: https://coreos.com/etcd/docs/{{ version }}/index.html
-  dev_url: https://github.com/coreos/etcd
+  doc_url: https://etcd.io/docs
+  dev_url: https://github.com/etcd-io/etcd
 
 extra:
   recipe-maintainers:

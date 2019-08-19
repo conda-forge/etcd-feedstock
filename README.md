@@ -1,7 +1,7 @@
 About etcd
 ==========
 
-Home: https://coreos.com/etcd/
+Home: https://etcd.io
 
 Package license: Apache-2.0
 
