@@ -35,6 +35,7 @@ about:
   home: https://etcd.io
   license: Apache-2.0
   license_family: Apache
+  license_file: {{ pkg_src }}/LICENSE
   summary: A distributed, reliable key-value store for the most critical data of a distributed system.
   doc_url: https://etcd.io/docs
   dev_url: https://github.com/etcd-io/etcd
