@@ -2,7 +2,7 @@
 {% set version = "3.4.0" %}
 
 {% set name = import_path.split('/')[-1] %}
-{% set pkg_src = 'src' + os.sep+ import_path.replace("/",os.sep) %}
+{% set pkg_src = 'src' + os.sep + 'go.etcd.io' + os.sep + 'etcd' %}
 
 package:
   name: {{ name|lower }}
