@@ -1,5 +1,5 @@
 {% set import_path = "github.com/coreos/etcd" %}
-{% set version = "3.3.15" %}
+{% set version = "3.4.0" %}
 
 {% set name = import_path.split('/')[-1] %}
 {% set pkg_src = 'src' + os.sep+ import_path.replace("/",os.sep) %}
@@ -11,7 +11,7 @@ package:
 source:
   - folder: {{ pkg_src }}
     url: https://{{ import_path | replace("coreos", "etcd-io") }}/archive/v{{ version }}.tar.gz
-    sha256: 3da9bba24d1d4c434d39b8f603c0f481d5888c2a9b7600d3d2cd0cc5d58804e2
+    sha256: 2c38749d6451bbcc3e027c0e47287e9a4c02d0f1f46e8b882139ff1032fc7831
 
 build:
   number: 0
