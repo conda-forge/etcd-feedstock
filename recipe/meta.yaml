@@ -23,7 +23,7 @@ requirements:
 test:
   commands:
     - etcd --version
-    - etcdctl --version
+    - etcdctl version
 
 about:
   home: https://etcd.io
