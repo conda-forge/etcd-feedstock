@@ -5,11 +5,13 @@ Home: https://etcd.io
 
 Package license: Apache-2.0
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/etcd-feedstock/blob/master/LICENSE.txt)
 
 Summary: A distributed, reliable key-value store for the most critical data of a distributed system.
 
+Development: https://github.com/etcd-io/etcd
 
+Documentation: https://etcd.io/docs
 
 Current build status
 ====================

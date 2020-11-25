@@ -1,5 +1,5 @@
 {% set name = "etcd" %}
-{% set version = "3.4.13" %}
+{% set version = "3.4.14" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/etcd-io/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 2c19f286909a746c4be3b220c8b39474bd5edc33dde92b990ac47765e25f2089
+  sha256: 88ec62a12cd2624b1d37a979aae4e695d183a73b2806725d0501d405816d399d
 
 build:
   number: 0
