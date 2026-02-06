@@ -10,7 +10,7 @@ source:
   sha256: 7dfb8597145ae5bc44b90a75765395271b8e33a57debcfef265a21a063417203
 
 build:
-  number: 0
+  number: 1
   script:
     {% for path in [ ".", "./etcdctl" ] %}
     - go install -v {{ path }}
