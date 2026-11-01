@@ -1,0 +1,40 @@
+schema_version: 1
+
+context:
+  name: etcd
+  version: "3.4.16"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/etcd-io/${{ name }}/archive/v${{ version }}.tar.gz
+  sha256: 7dfb8597145ae5bc44b90a75765395271b8e33a57debcfef265a21a063417203
+
+build:
+  number: 1
+  script:
+    - go install -v .
+    - go install -v ./etcdctl
+
+requirements:
+  build:
+    - ${{ compiler('go') }} 1.13.*
+
+tests:
+  - script:
+      - etcd --version
+      - etcdctl version
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: A distributed, reliable key-value store for the most critical data of a distributed system.
+  homepage: https://etcd.io
+  repository: https://github.com/etcd-io/etcd
+  documentation: https://etcd.io/docs
+
+extra:
+  recipe-maintainers:
+    - sodre
