@@ -1,5 +1,7 @@
 provider:
   win: azure
+  osx_arm64: default
+  linux_aarch64: default
 bot:
   automerge: true
 conda_forge_output_validation: true
