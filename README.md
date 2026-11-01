@@ -217,4 +217,5 @@ Feedstock Maintainers
 =====================
 
 * [@sodre](https://github.com/sodre/)
+* [@wolfv](https://github.com/wolfv/)
 
