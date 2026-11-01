@@ -2,34 +2,57 @@ schema_version: 1
 
 context:
   name: etcd
-  version: "3.4.16"
+  version: "3.7.3"
 
 package:
-  name: ${{ name|lower }}
+  name: etcd
   version: ${{ version }}
 
 source:
   url: https://github.com/etcd-io/${{ name }}/archive/v${{ version }}.tar.gz
-  sha256: 7dfb8597145ae5bc44b90a75765395271b8e33a57debcfef265a21a063417203
+  sha256: 38455879fd3744d9aec12f45e890bede61df8b2323279e2c895bbb1bd484681f
 
 build:
-  number: 1
+  number: 0
   script:
-    - go install -v .
-    - go install -v ./etcdctl
+    env:
+      GOTOOLCHAIN: local
+      GOFLAGS: -tags=grpcnotrace
+    content:
+      - cd server
+      - go install -v -trimpath -ldflags="-s -w" .
+      - go-licenses save . --save_path=../license-files/server
+      - cd ../etcdctl
+      - go install -v -trimpath -ldflags="-s -w" .
+      - go-licenses save . --save_path=../license-files/etcdctl
+      - cd ../etcdutl
+      - go install -v -trimpath -ldflags="-s -w" .
+      - go-licenses save . --save_path=../license-files/etcdutl
 
 requirements:
   build:
-    - ${{ compiler('go') }} 1.13.*
+    - ${{ compiler('go') }}
+    - go >=1.27.3
+    - go-licenses
 
 tests:
   - script:
       - etcd --version
       - etcdctl version
+      - etcdutl version
+  - requirements:
+      run:
+        - python
+    files:
+      recipe:
+        - run_test.py
+    script: python run_test.py
 
 about:
   license: Apache-2.0
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - license-files/
   summary: A distributed, reliable key-value store for the most critical data of a distributed system.
   homepage: https://etcd.io
   repository: https://github.com/etcd-io/etcd
