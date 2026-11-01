@@ -19,8 +19,17 @@ build:
       GOTOOLCHAIN: local
       GOFLAGS: -tags=grpcnotrace
     content:
+      # Materialize example-test symlinks that Windows cannot resolve while Go scans packages.
+      - if: win
+        then:
+          - del client\v3\example*_test.go
+          - copy tests\integration\clientv3\examples\example*_test.go client\v3\
+          - del client\v3\concurrency\example*_test.go
+          - copy tests\integration\clientv3\concurrency\example*_test.go client\v3\concurrency\
       - cd server
-      - go install -v -trimpath -ldflags="-s -w" .
+      - if: win
+        then: go build -v -trimpath -ldflags="-s -w" -o "%LIBRARY_PREFIX%\bin\etcd.exe" .
+        else: go build -v -trimpath -ldflags="-s -w" -o "$PREFIX/bin/etcd" .
       - go-licenses save . --save_path=../license-files/server
       - cd ../etcdctl
       - go install -v -trimpath -ldflags="-s -w" .
