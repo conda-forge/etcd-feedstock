@@ -1,0 +1,73 @@
+schema_version: 1
+
+context:
+  name: etcd
+  version: "3.7.3"
+
+package:
+  name: etcd
+  version: ${{ version }}
+
+source:
+  url: https://github.com/etcd-io/${{ name }}/archive/v${{ version }}.tar.gz
+  sha256: 38455879fd3744d9aec12f45e890bede61df8b2323279e2c895bbb1bd484681f
+
+build:
+  number: 0
+  script:
+    env:
+      GOTOOLCHAIN: local
+      GOFLAGS: -tags=grpcnotrace
+    content:
+      # Materialize example-test symlinks that Windows cannot resolve while Go scans packages.
+      - if: win
+        then:
+          - del client\v3\example*_test.go
+          - copy tests\integration\clientv3\examples\example*_test.go client\v3\
+          - del client\v3\concurrency\example*_test.go
+          - copy tests\integration\clientv3\concurrency\example*_test.go client\v3\concurrency\
+      - cd server
+      - if: win
+        then: go build -v -trimpath -ldflags="-s -w" -o "%LIBRARY_PREFIX%\bin\etcd.exe" .
+        else: go build -v -trimpath -ldflags="-s -w" -o "$PREFIX/bin/etcd" .
+      - go-licenses save . --save_path=../license-files/server
+      - cd ../etcdctl
+      - go install -v -trimpath -ldflags="-s -w" .
+      - go-licenses save . --save_path=../license-files/etcdctl
+      - cd ../etcdutl
+      - go install -v -trimpath -ldflags="-s -w" .
+      - go-licenses save . --save_path=../license-files/etcdutl
+
+requirements:
+  build:
+    - ${{ compiler('go') }}
+    - go >=1.27.3
+    - go-licenses
+
+tests:
+  - script:
+      - etcd --version
+      - etcdctl version
+      - etcdutl version
+  - requirements:
+      run:
+        - python
+    files:
+      recipe:
+        - run_test.py
+    script: python run_test.py
+
+about:
+  license: Apache-2.0
+  license_file:
+    - LICENSE
+    - license-files/
+  summary: A distributed, reliable key-value store for the most critical data of a distributed system.
+  homepage: https://etcd.io
+  repository: https://github.com/etcd-io/etcd
+  documentation: https://etcd.io/docs
+
+extra:
+  recipe-maintainers:
+    - sodre
+    - wolfv
